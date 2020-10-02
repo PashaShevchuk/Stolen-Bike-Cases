@@ -1,0 +1,17 @@
+{
+  "name": "stolen-bike-cases",
+  "version": "1.0.0",
+  "description": "Stolen Bike Cases",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stolen",
+    "bike",
+    "node",
+    "react"
+  ],
+  "author": "Pavlo Shevchuk",
+  "license": "ISC"
+}
