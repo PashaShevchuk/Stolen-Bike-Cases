@@ -6,6 +6,7 @@ const bikeRouter = Router();
 
 
 bikeRouter.post('/', bikeController.createReport);
+bikeRouter.get('/', bikeController.getAll);
 
 
 module.exports = bikeRouter;
