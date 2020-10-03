@@ -5,10 +5,25 @@ export const HomePage = () => {
   return (
     <div className="row">
       <div className="col s6 offset-s3">
-        <h1>Home page</h1>
-        <div>
-          <div><Link to="/officer">Officer</Link></div>
-          <div><Link to="/report">Report</Link></div>
+
+        <Link to="/">
+          <h1 className="text-center">Stolen Bike</h1>
+        </Link>
+
+        <div className="d-flex justify-content-around">
+
+          <div>
+            <Link to="/report">
+              <h4>Report bike theft</h4>
+            </Link>
+          </div>
+
+          <div>
+            <Link to="/officer">
+              <h4>For police officers</h4>
+            </Link>
+          </div>
+
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ module.exports = {
       await officerService.updateBikeCaseStatus(officer.id, officerWithUpdatedStatus);
       await reportService.updateFoundStatus(bike.id, bikeWithUpdatedStatus);
 
-      res.status(200).send('The bike status has been updated');
+      res.status(200).json('The bike status has been updated');
 
     } catch (e) {
       next(e);
