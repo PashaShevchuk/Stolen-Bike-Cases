@@ -1,15 +1,17 @@
 const { Router } = require('express');
 
-// const {
-//   carMiddleware: { checkCarValidity, isCarInDB, checkUpdateCarValidity },
-//   tokenMiddleware: { checkAccessToken }
-// } = require('../middlewares');
 const { officerController } = require('../controllers');
+const {
+  officerMiddleware: { isOfficerInDbById },
+  reportMiddleware: { isBikeInDbById }
+} = require('../middlewares');
+
 
 const officerRouter = Router();
 
 
-officerRouter.get('/', officerController.fetchAll);
+officerRouter.post('/', isOfficerInDbById, isBikeInDbById, officerController.officerWasFoundBike);
+officerRouter.get('/', officerController.fetchAll); // for DEV
 
 
 module.exports = officerRouter;

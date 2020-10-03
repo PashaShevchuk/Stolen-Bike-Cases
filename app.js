@@ -36,7 +36,7 @@ sequelize
       }
       console.log('Server listening on 5000');
 
-      croneRun();
+      // croneRun();
     });
   })
   .catch(reason => {

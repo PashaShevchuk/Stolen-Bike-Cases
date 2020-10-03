@@ -1,9 +1,4 @@
-// const uuid = require('uuid').v4();
-// const fs = require('fs-extra').promises;
-// const path = require('path');
-
-const sequelize = require('../dataBase/sequelize.config');
-const { officerService } = require('../services');
+const { officerService, reportService } = require('../services');
 
 
 module.exports = {
@@ -17,4 +12,21 @@ module.exports = {
       next(e);
     }
   },
+
+  officerWasFoundBike: async (req, res, next) => {
+    try {
+      const { officer, bike } = req;
+      const officerWithUpdatedStatus = { ...officer, bike_case: null };
+      const bikeWithUpdatedStatus = { ...bike, found: 'found' };
+
+      await officerService.updateBikeCaseStatus(officer.id, officerWithUpdatedStatus);
+      await reportService.updateFoundStatus(bike.id, bikeWithUpdatedStatus);
+
+      res.status(200).send('The bike status has been updated');
+
+    } catch (e) {
+      next(e);
+    }
+  },
+
 };

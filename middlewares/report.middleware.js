@@ -1,9 +1,9 @@
-const BikeModel = require('../dataBase/models/bike.model');
+const { reportService } = require('../services');
 const { newReportValidator } = require('../validators');
 const {
   CustomError,
   statusCodesEnum,
-  reportsErrors: { BAD_REQUEST_NOT_VALID_DATA }
+  reportsErrors: { BAD_REQUEST_NOT_VALID_DATA, NOT_FOUND_BIKE }
 } = require('../errors');
 
 
@@ -27,51 +27,21 @@ module.exports = {
     }
   },
 
-  isCarInDB: async (req, res, next) => {
+  isBikeInDbById: (req, res, next) => {
     try {
-      const id = +req.params.id;
+      const { bike_case_id } = req.body;
 
-      const car = await CarModel.findOne({ where: { id } });
+      const bike = reportService.findOneById(bike_case_id);
 
-      if (!car) {
+      if (!bike) {
         return next(new CustomError(
-          NOT_FOUND_CAR.message,
+          NOT_FOUND_BIKE.message,
           statusCodesEnum.NOT_FOUND,
-          NOT_FOUND_CAR.code)
+          NOT_FOUND_BIKE.code)
         );
       }
 
-      req.car = car;
-      next();
-
-    } catch (e) {
-      next(e);
-    }
-  },
-
-  checkUpdateCarValidity: (req, res, next) => {
-    try {
-      const car = req.body;
-      const dataToUpdateCar = Object.keys(car).length !== 0;
-
-      if (!dataToUpdateCar) {
-        return next(new CustomError(
-          BAD_REQUEST_NOT_VALID_CAR.message,
-          statusCodesEnum.BAD_REQUEST,
-          BAD_REQUEST_NOT_VALID_CAR.code)
-        );
-      }
-
-      const { error } = updateCarValidator.validate(car);
-
-      if (error) {
-        return next(new CustomError(
-          error.details[0].message,
-          statusCodesEnum.BAD_REQUEST,
-          BAD_REQUEST_NOT_VALID_CAR.code)
-        );
-      }
-
+      req.bike = bike;
       next();
 
     } catch (e) {

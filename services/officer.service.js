@@ -4,6 +4,8 @@ const OfficerModel = require('../dataBase/models/officer.model');
 module.exports = {
   getAll: () => OfficerModel.findAll({}),
 
+  findOneById: (id) => OfficerModel.findOne({ where: { id } }),
+
   findFreeOfficer: () => {
     return OfficerModel.findOne({
       where: { bike_case: null },

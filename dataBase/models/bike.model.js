@@ -31,49 +31,6 @@ BikeModel.init({
     allowNull: false,
     defaultValue: 'not found'
   },
-  // owner_name: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false
-  // },
-  // owner_surname: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false
-  // },
-  // telephone: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false
-  // },
-  // residence_address: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false
-  // },
-  // date_abduction: {
-  //   type: DataTypes.STRING,
-  // },
-  // abduction_address: {
-  //   type: DataTypes.STRING,
-  // },
-  // brand: {
-  //   type: DataTypes.STRING,
-  // },
-  // frame_number: {
-  //   type: DataTypes.STRING,
-  // },
-  // color: {
-  //   type: DataTypes.STRING,
-  // },
-  // other_data: {
-  //   type: DataTypes.STRING,
-  // },
-  // created_at: {
-  //   type: DataTypes.STRING,
-  // defaultValue: new Date().toISOString()
-  // },
-  // officer_id: {
-  //   type: DataTypes.INTEGER,
-  //   foreignKey: true
-  // },
-
 }, {
   sequelize,
   modelName: 'bike',
