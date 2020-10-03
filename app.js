@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const apiRouter = require('./routes/api.router');
+const croneRun = require('./crone-jobs');
 
 
 const app = express();
@@ -34,6 +35,8 @@ sequelize
         console.log(err);
       }
       console.log('Server listening on 5000');
+
+      croneRun();
     });
   })
   .catch(reason => {

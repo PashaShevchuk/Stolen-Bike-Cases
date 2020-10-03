@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../sequelize.config');
-const OfficerModel = require('./officer.model');
+// const OfficerModel = require('./officer.model');
 const { BIKES } = require('../../configs/db-tables.enum');
 
 class BikeModel extends Model {
@@ -25,6 +25,11 @@ BikeModel.init({
   bike: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  found: {
+    type: DataTypes.ENUM('not found', 'found', 'wanted'),
+    allowNull: false,
+    defaultValue: 'not found'
   },
   // owner_name: {
   //   type: DataTypes.STRING,
@@ -60,14 +65,14 @@ BikeModel.init({
   // other_data: {
   //   type: DataTypes.STRING,
   // },
-  created_at: {
-    type: DataTypes.STRING,
-    defaultValue: new Date().toISOString()
-  },
-  officer_id: {
-    type: DataTypes.INTEGER,
-    foreignKey: true
-  },
+  // created_at: {
+  //   type: DataTypes.STRING,
+  // defaultValue: new Date().toISOString()
+  // },
+  // officer_id: {
+  //   type: DataTypes.INTEGER,
+  //   foreignKey: true
+  // },
 
 }, {
   sequelize,
@@ -75,8 +80,5 @@ BikeModel.init({
   tableName: BIKES,
   timestamps: false
 });
-
-BikeModel.belongsTo(OfficerModel, { foreignKey: 'officer_id' });
-
 
 module.exports = BikeModel;
