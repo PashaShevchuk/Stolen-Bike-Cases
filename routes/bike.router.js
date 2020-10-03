@@ -5,8 +5,8 @@ const { bikeController } = require('../controllers');
 const bikeRouter = Router();
 
 
-bikeRouter.post('/', bikeController.createReport);
 bikeRouter.get('/', bikeController.getAll);
+bikeRouter.post('/', bikeController.createReport);
 
 
 module.exports = bikeRouter;

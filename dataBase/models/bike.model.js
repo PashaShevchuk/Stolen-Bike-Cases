@@ -14,40 +14,52 @@ BikeModel.init({
     autoIncrement: true,
     allowNull: false
   },
-  owner_name: {
+  owner: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  owner_surname: {
+  contacts: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  telephone: {
+  bike: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  residence_address: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  date_abduction: {
-    type: DataTypes.STRING,
-  },
-  abduction_address: {
-    type: DataTypes.STRING,
-  },
-  brand: {
-    type: DataTypes.STRING,
-  },
-  frame_number: {
-    type: DataTypes.STRING,
-  },
-  color: {
-    type: DataTypes.STRING,
-  },
-  other_data: {
-    type: DataTypes.STRING,
-  },
+  // owner_name: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false
+  // },
+  // owner_surname: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false
+  // },
+  // telephone: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false
+  // },
+  // residence_address: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false
+  // },
+  // date_abduction: {
+  //   type: DataTypes.STRING,
+  // },
+  // abduction_address: {
+  //   type: DataTypes.STRING,
+  // },
+  // brand: {
+  //   type: DataTypes.STRING,
+  // },
+  // frame_number: {
+  //   type: DataTypes.STRING,
+  // },
+  // color: {
+  //   type: DataTypes.STRING,
+  // },
+  // other_data: {
+  //   type: DataTypes.STRING,
+  // },
   created_at: {
     type: DataTypes.STRING,
     defaultValue: new Date().toISOString()

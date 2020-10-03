@@ -1,12 +1,14 @@
 const express = require('express');
 const sequelize = require('./dataBase/sequelize.config');
+const cors = require('cors');
 require('dotenv').config();
 
 const apiRouter = require('./routes/api.router');
 
+
 const app = express();
 
-
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -31,7 +33,6 @@ sequelize
       if (err) {
         console.log(err);
       }
-
       console.log('Server listening on 5000');
     });
   })
