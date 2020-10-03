@@ -27,11 +27,11 @@ module.exports = {
     }
   },
 
-  isBikeInDbById: (req, res, next) => {
+  isBikeInDbById: async (req, res, next) => {
     try {
       const { bike_case_id } = req.body;
 
-      const bike = reportService.findOneById(bike_case_id);
+      const bike = await reportService.findOneById(bike_case_id);
 
       if (!bike) {
         return next(new CustomError(
