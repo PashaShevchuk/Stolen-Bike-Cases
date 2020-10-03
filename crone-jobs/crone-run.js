@@ -1,20 +1,23 @@
 const cron = require('node-cron');
 
-const findBike = require('./give-bike-to-free-officer');
+const giveBikeToFreeOfficer = require('./give-bike-to-free-officer');
+
+
+const every2Hour = '0 */2 * * *';
+const every2SecondDEV = '*/5 * * * * *';
 
 
 module.exports = () => {
   try {
-    // at 00:00 everyday
-    cron.schedule('*/5 * * * * *', async () => {
+    cron.schedule(every2SecondDEV, async () => {
       console.log('-----------------------ITERATION START------------------------');
 
-      await findBike();
+      await giveBikeToFreeOfficer();
 
       console.log('-----------------------ITERATION FINISH-----------------------');
     });
 
   } catch (e) {
-    console.log(e);
+    console.log('crone-run', e);
   }
 }

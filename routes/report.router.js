@@ -1,14 +1,13 @@
 const { Router } = require('express');
 
-const { bikeController } = require('../controllers');
+const { reportController } = require('../controllers');
 const { reportMiddleware } = require('../middlewares');
 
 const reportRouter = Router();
 
 
-reportRouter.get('/', bikeController.getAll);
-
-reportRouter.post('/', reportMiddleware.checkReportValidity, bikeController.createReport);
+reportRouter.post('/', reportMiddleware.checkReportValidity, reportController.createReport);
+reportRouter.get('/', reportController.getAll); // for DEV
 
 
 module.exports = reportRouter;
