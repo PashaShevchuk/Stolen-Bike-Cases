@@ -2,8 +2,6 @@ const BikeModel = require('../dataBase/models/bike.model');
 
 
 module.exports = {
-  getAll: () => BikeModel.findAll({}),
-
   findOneById: (id) => BikeModel.findOne({ where: { id } }),
 
   create: (reportObj) => BikeModel.create(reportObj).then(() => 'The report has been created'),

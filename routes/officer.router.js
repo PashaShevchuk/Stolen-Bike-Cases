@@ -10,7 +10,6 @@ const officerRouter = Router();
 
 
 officerRouter.post('/', isOfficerInDbById, checkBikeCaseId, officerController.officerWasFoundBike);
-officerRouter.get('/', officerController.fetchAll); // for DEV
 
 
 module.exports = officerRouter;

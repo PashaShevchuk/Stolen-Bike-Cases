@@ -14,15 +14,4 @@ module.exports = {
       next(e);
     }
   },
-
-  getAll: async (req, res, next) => {
-    try {
-      const reports = await reportService.getAll();
-
-      res.json(reports);
-
-    } catch (e) {
-      next(e);
-    }
-  },
 };

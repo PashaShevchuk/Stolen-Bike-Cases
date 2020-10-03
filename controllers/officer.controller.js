@@ -2,17 +2,6 @@ const { officerService, reportService } = require('../services');
 
 
 module.exports = {
-  fetchAll: async (req, res, next) => {
-    try {
-      const officers = await officerService.getAll();
-
-      res.json(officers);
-
-    } catch (e) {
-      next(e);
-    }
-  },
-
   officerWasFoundBike: async (req, res, next) => {
     try {
       const { officer, bike } = req;
@@ -27,6 +16,5 @@ module.exports = {
     } catch (e) {
       next(e);
     }
-  },
-
+  }
 };

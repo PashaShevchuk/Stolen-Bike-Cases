@@ -3,8 +3,6 @@ const BikeModel = require('../dataBase/models/bike.model');
 
 
 module.exports = {
-  getAll: () => OfficerModel.findAll({}),
-
   findOneById: (id) => OfficerModel.findOne({ where: { id } }),
 
   findOneByOfficerIdBikeId: (officer_id, bike_id) => OfficerModel.findOne({

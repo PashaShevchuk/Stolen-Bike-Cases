@@ -4,12 +4,12 @@ const giveBikeToFreeOfficer = require('./give-bike-to-free-officer');
 
 
 const every2Hour = '0 */2 * * *';
-const every2SecondDEV = '*/5 * * * * *';
+const every5SecondDEV = '*/5 * * * * *';
 
 
 module.exports = () => {
   try {
-    cron.schedule(every2SecondDEV, async () => {
+    cron.schedule(every2Hour, async () => {
       console.log('-----------------------ITERATION START------------------------');
 
       await giveBikeToFreeOfficer();
