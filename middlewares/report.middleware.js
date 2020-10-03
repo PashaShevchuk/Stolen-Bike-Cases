@@ -3,7 +3,7 @@ const { newReportValidator } = require('../validators');
 const {
   CustomError,
   statusCodesEnum,
-  reportsErrors: {BAD_REQUEST_NOT_VALID_DATA}
+  reportsErrors: { BAD_REQUEST_NOT_VALID_DATA }
 } = require('../errors');
 
 
@@ -19,6 +19,7 @@ module.exports = {
         );
       }
 
+      req.reportObj = req.body;
       next();
 
     } catch (e) {

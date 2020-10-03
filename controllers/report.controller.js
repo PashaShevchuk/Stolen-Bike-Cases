@@ -4,11 +4,11 @@ const { reportService } = require('../services');
 module.exports = {
   createReport: async (req, res, next) => {
     try {
-      const reportObj = req.body;
+      const { reportObj } = req;
 
-      const report = await reportService.create(reportObj);
+      const reportMessage = await reportService.create(reportObj);
 
-      res.json(report);
+      res.status(200).send(reportMessage);
 
     } catch (e) {
       next(e);
