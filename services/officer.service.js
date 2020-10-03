@@ -4,7 +4,7 @@ const OfficerModel = require('../dataBase/models/officer.model');
 module.exports = {
   getAll: () => OfficerModel.findAll({}),
 
-  findOne: () => {
+  findFreeOfficer: () => {
     return OfficerModel.findOne({
       where: { bike_case: null },
       raw: true,
@@ -12,7 +12,7 @@ module.exports = {
     })
   },
 
-  updateById: (id, obj) => {
+  updateBikeCaseStatus: (id, obj) => {
     return OfficerModel.update(obj, { where: { id } });
   },
 };

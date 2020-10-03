@@ -7,13 +7,13 @@ module.exports = {
   create: (reportObj) => BikeModel.create(reportObj).then(() => 'The report has been created'),
 
 
-  findOne: () => BikeModel.findOne({
+  getNotFoundBike: () => BikeModel.findOne({
     where: { found: 'not found' },
     raw: true,
     nest: true,
   }),
 
-  updateBy: (id, obj) => {
+  updateFoundStatus: (id, obj) => {
     return BikeModel.update(obj, { where: { id } });
   },
 };

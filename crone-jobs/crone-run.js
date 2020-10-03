@@ -1,6 +1,6 @@
 const cron = require('node-cron');
 
-const findBike = require('./find-bike');
+const findBike = require('./give-bike-to-free-officer');
 
 
 module.exports = () => {
