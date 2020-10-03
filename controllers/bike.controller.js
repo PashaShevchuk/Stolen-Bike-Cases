@@ -5,8 +5,9 @@ module.exports = {
   createReport: async (req, res, next) => {
     try {
       const reportData = req.body;
+      console.log('********************', reportData);
 
-      const report = await bikeService.createReport({ reportData });
+      const report = await bikeService.createReport( reportData );
 
       res.json(report);
 

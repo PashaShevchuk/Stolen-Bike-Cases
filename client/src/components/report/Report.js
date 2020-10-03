@@ -1,103 +1,62 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { useHttp } from '../../hooks/http.hook'
-
+import { useMessage } from '../../hooks/message.hook'
 
 export const ReportPage = () => {
-  const { loading, error, request } = useHttp();
+  const message = useMessage();
+  const { loading, request, error, clearError } = useHttp();
+  const [form, setForm] = useState({
+    owner: '', contacts: '', bike: ''
+  });
 
-  const handler = async () => {
+  useEffect(() => {
+    message(error)
+    clearError()
+  }, [error, message, clearError])
+
+  // useEffect(() => {
+  //   window.M.updateTextFields()
+  // }, [])
+
+  const reportHandler = async (event) => {
+    event.preventDefault();
     try {
-      const data = await request('http://localhost:5000/api/report');
-      console.log(data);
+      console.log(form);
+      const data = await request('http://localhost:5000/api/report', 'POST', { ...form });
+      console.log('data', data);
     } catch (e) {
+      console.log(e);
     }
   };
 
-  const fetchHandler = async () => {
-    const response = await fetch('/api/report', {method: 'POST'});
-    const data = await response.json();
-    console.log('***********', data);
-  };
-
-  const aaa = (e) => {
-    e.preventDefault();
-    console.log('ssssssssss', e.target.first.value);
+  const changeHandler = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value })
   }
+
+  // const aaa = (e) => {
+  //   e.preventDefault();
+  //   console.log('ssssssssss', e);
+  // }
 
   return (
     <div className="row">
       <div className="col s6 offset-s3">
         <h1>ReportPage</h1>
+        <div>
+          <form action="">
+            <input type="text" name="owner" onChange={changeHandler}/>
+            <br/>
+            <input type="text" name="contacts" onChange={changeHandler}/>
+            <br/>
+            <input type="text" name="bike" onChange={changeHandler}/>
+            <br/>
+            <div>
+              <button type="submit" className="btn btn-primary" onClick={ reportHandler }>Submit</button>
+            </div>
+          </form>
+        </div>
 
-        {/*<div className="container">*/ }
-        {/*  /!*<form onSubmit={ handler }>*!/*/ }
-        {/*  <form>*/ }
-        {/*    <h2>Contact Us</h2>*/ }
-        {/*    <div className="row">*/ }
-        {/*      <div className="col-md-6">*/ }
-        {/*        <div className="form-group">*/ }
-        {/*          <label htmlFor="first">First Name</label>*/ }
-        {/*          <input type="text" className="form-control" placeholder="" id="first"/>*/ }
-        {/*        </div>*/ }
-        {/*      </div>*/ }
-
-        {/*      <div className="col-md-6">*/ }
-        {/*        <div className="form-group">*/ }
-        {/*          <label htmlFor="last">Last Name</label>*/ }
-        {/*          <input type="text" className="form-control" placeholder="" id="last"/>*/ }
-        {/*        </div>*/ }
-        {/*      </div>*/ }
-
-        {/*    </div>*/ }
-
-
-        {/*    <div className="row">*/ }
-        {/*      <div className="col-md-6">*/ }
-        {/*        <div className="form-group">*/ }
-        {/*          <label htmlFor="company">Company</label>*/ }
-        {/*          <input type="text" className="form-control" placeholder="" id="company"/>*/ }
-        {/*        </div>*/ }
-
-
-        {/*      </div>*/ }
-
-
-        {/*      <div className="col-md-6">*/ }
-
-        {/*        <div className="form-group">*/ }
-        {/*          <label htmlFor="phone">Phone Number</label>*/ }
-        {/*          <input type="tel" className="form-control" id="phone" placeholder="phone"/>*/ }
-        {/*        </div>*/ }
-        {/*      </div>*/ }
-
-        {/*    </div>*/ }
-
-
-        {/*    <div className="row">*/ }
-        {/*      <div className="col-md-6">*/ }
-
-        {/*        <div className="form-group">*/ }
-        {/*          <label htmlFor="email">Email address</label>*/ }
-        {/*          <input type="email" className="form-control" id="email" placeholder="email"/>*/ }
-        {/*        </div>*/ }
-        {/*      </div>*/ }
-
-
-        {/*      <div className="col-md-6">*/ }
-        {/*        <div className="form-group">*/ }
-        {/*          <label htmlFor="url">Your Website <small>Please include http://</small></label>*/ }
-        {/*          <input type="url" className="form-control" id="url" placeholder="url"/>*/ }
-        {/*        </div>*/ }
-
-        {/*      </div>*/ }
-
-        {/*    </div>*/ }
-
-        {/*    <button type="submit" className="btn btn-primary">Submit</button>*/ }
-        {/*  </form>*/ }
-        {/*</div>*/ }
-        <button className="btn btn-primary" onClick={ handler }>Submit</button>
 
       </div>
     </div>
