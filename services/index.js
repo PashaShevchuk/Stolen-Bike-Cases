@@ -1,2 +1,2 @@
-module.exports.bikeService = require('./bike.service');
+module.exports.reportService = require('./report.service');
 module.exports.officerService = require('./officer.service');

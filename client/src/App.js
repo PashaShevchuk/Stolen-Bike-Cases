@@ -12,10 +12,11 @@ function App() {
       <Router>
 
         <Switch>
+
           <Route path="/" exact>
             <HomePage/>
-
           </Route>
+
           <Route path="/officer" exact>
             <OfficerPage/>
           </Route>
@@ -24,7 +25,12 @@ function App() {
             <ReportPage/>
           </Route>
 
+          <Route path="*">
+            <HomePage/>
+          </Route>
+
         </Switch>
+
       </Router>
 
     </div>
